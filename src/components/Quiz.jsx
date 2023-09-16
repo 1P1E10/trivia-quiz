@@ -4,22 +4,22 @@ import styles from "../css/Quiz.module.css";
 import { AiFillHome } from "react-icons/ai";
 import JSConfetti from "js-confetti";
 
-function Quiz() {
-  const jsConfetti = new JSConfetti();
+const jsConfetti = new JSConfetti();
 
+function Quiz() {
   const [searchParams] = useSearchParams();
   const difficulty = searchParams.get("difficulty");
-  const apiUrl = `https://the-trivia-api.com/api/questions?difficulty=${difficulty}&categories=food_and_drink&limit=1`; // Why query param is difficulty not difficulties?
+  const apiUrl = `https://the-trivia-api.com/api/questions?limit=1&difficulty=${difficulty}&categories=food_and_drink`; // Why query param is difficulty not difficulties?
 
   const [isLoading, setIsLoading] = useState(false);
   const [next, setNext] = useState(false);
   const [question, setQuestion] = useState("");
-  const [buttons, setButtons] = useState([]);
+  const [choices, setChoices] = useState([]);
 
   useEffect(() => {
     setNext(false);
     setIsLoading(true);
-    setButtons([]);
+    setChoices([]);
     async function getQuestion() {
       try {
         const response = await fetch(apiUrl);
@@ -35,7 +35,7 @@ function Quiz() {
         ];
 
         // Randomize the choices
-        setButtons(
+        setChoices(
           choices
             .map((choice, index) => {
               return (
@@ -66,16 +66,17 @@ function Quiz() {
   // Handle user's answer selection
   async function handleClick(e) {
     const choiceBtns = document.getElementsByClassName("choiceBtns");
-    // Disable all choice buttons after the first click
     for (let i = 0; i < choiceBtns.length; i++) {
-      choiceBtns[i].disabled = true;
+      choiceBtns[i].disabled = true; // Disable all choice buttons after the first click
+      if (choiceBtns[i].value === "correct") {
+        choiceBtns[i].style.backgroundColor = "green";
+      }
     }
 
     // When answer is correct
     if (e.target.value === "correct") {
-      e.target.style.backgroundColor = "green";
       await jsConfetti.addConfetti({
-        emojis: ["🎉"],
+        emojis: ["🎉", "🎊"],
       });
       setNext(true);
     }
@@ -96,7 +97,7 @@ function Quiz() {
       ) : (
         <>
           <h2 className={styles.question}>{question}</h2>
-          <div className={styles.choices}>{buttons}</div>
+          <div className={styles.choices}>{choices}</div>
         </>
       )}
     </div>
