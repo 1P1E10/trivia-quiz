@@ -63,9 +63,9 @@ function Quiz() {
   }, [selected]);
 
   // Handle correct and incorrect answer
-  function handleClick(e) {
+  async function handleClick(e) {
     if (e.target.value === "correct") {
-      jsConfetti.addConfetti({
+      await jsConfetti.addConfetti({
         emojis: ["🎉"],
       });
     }
