@@ -26,10 +26,7 @@
     margin-top: 200px;
 }
 
-.btn1,
-.btn2,
-.btn3,
-.btn4 {
+.btn {
     justify-self: center;
     height: 120px;
     width: 350px;
@@ -39,17 +36,11 @@
     border-color: transparent;
 }
 
-.btn1:hover,
-.btn2:hover,
-.btn3:hover,
-.btn4:hover {
+.btn:hover {
     border: solid #84c1d5 5px;
 }
 
-.btn1:disabled,
-.btn2:disabled,
-.btn3:disabled,
-.btn4:disabled {
+.btn:disabled {
     border-color: transparent;
     background-color: #cccccc;
 }

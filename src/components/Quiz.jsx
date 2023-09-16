@@ -50,11 +50,18 @@ function Quiz() {
 
         // Randomize the choices
         setButtons(
-          choices
-            .map((choice) => {
-              return <button>{choice.choice}</button>;
-            })
-            .sort(() => Math.random() - 0.5)
+          choices.map((choice, index) => {
+            return (
+              <button
+                className={styles.btn}
+                onClick={handleClick}
+                value={choice.isCorrect}
+                disabled={selected}
+              >
+                {choice.choice}
+              </button>
+            );
+          })
         );
 
         choices.sort(() => Math.random() - 0.5);
@@ -73,7 +80,7 @@ function Quiz() {
       }
     }
     getQuestion();
-  }, [next]);
+  }, []);
 
   // Handle correct and incorrect answer
   async function handleClick(e) {
@@ -95,7 +102,6 @@ function Quiz() {
 
   return (
     <div className={styles.page}>
-      <h3>{buttons}</h3> {/* Debugging */}
       <NavLink to="/" className={styles.homeBtn}>
         <AiFillHome />
       </NavLink>
@@ -105,8 +111,9 @@ function Quiz() {
         <>
           <h2 className={styles.Question}>{question}</h2>
           <div className={styles.choices}>
-            {/* Disable the buttons after first click */}
-            <button
+            {buttons}
+            {/* Debugging */}
+            {/* <button
               className={styles.btn1}
               onClick={handleClick}
               value={choiceOneVal}
@@ -137,7 +144,7 @@ function Quiz() {
               disabled={selected}
             >
               {choiceFour}
-            </button>
+            </button> */}
           </div>
         </>
       )}
