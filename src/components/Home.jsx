@@ -4,7 +4,7 @@ import styles from "../css/Home.module.css";
 import { BiPlayCircle } from "react-icons/bi";
 
 function Home() {
-  const [level, setLevel] = useState(null);
+  const [level, setLevel] = useState("easy"); // Quiz difficulty level
 
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ function Home() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    navigate("/quiz?difficulty=easy");
+    navigate(`/quiz?difficulty=${level}`);
   }
 
   return (
