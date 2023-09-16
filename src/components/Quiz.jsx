@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { NavLink, useSearchParams } from "react-router-dom";
+import { NavLink, useParams, useSearchParams } from "react-router-dom";
 import styles from "../css/Quiz.module.css";
 import { AiFillHome } from "react-icons/ai";
 
-const apiUrl =
-  "https://the-trivia-api.com/api/questions/?categories=food_and_drink&difficulties=easy&limit=1";
-
 function Quiz() {
+  const [searchParams] = useSearchParams();
+  const difficulties = searchParams.get("difficulties");
+  const apiUrl = `https://the-trivia-api.com/api/questions/?categories=food_and_drink&difficulties=${difficulties}&limit=1`;
+
   const [isLoading, setIsLoading] = useState(false);
   const [question, setQuestion] = useState("");
   const [correctAnswer, setCorrectAnswer] = useState("");
@@ -24,6 +25,8 @@ function Quiz() {
         if (!response.ok) {
           throw new Error("Failed to request quiz question");
         }
+
+        console.log(json);
 
         setCorrectAnswer(json[0].correctAnswer);
 
@@ -47,9 +50,6 @@ function Quiz() {
     }
     getQuestion();
   }, []);
-
-  const [searchParams] = useSearchParams();
-  console.log(searchParams.get("level"));
 
   return (
     <div className={styles.page}>
