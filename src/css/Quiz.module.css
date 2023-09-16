@@ -46,6 +46,14 @@
     border: solid #84c1d5 5px;
 }
 
+.btn1:disabled,
+.btn2:disabled,
+.btn3:disabled,
+.btn4:disabled {
+    border-color: transparent;
+    background-color: #c7bcbc;
+}
+
 .btn1 {
     background-color: #4D49BF;
 }

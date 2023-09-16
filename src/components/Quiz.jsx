@@ -25,9 +25,11 @@ function Quiz() {
   const [choiceFourVal, setChoiceFourVal] = useState("wrong");
 
   const [selected, setSelected] = useState(false);
+  const [next, setNext] = useState(false);
 
   useEffect(() => {
     setSelected(false);
+    setNext(false);
     setIsLoading(true);
     async function getQuestion() {
       try {
@@ -61,20 +63,21 @@ function Quiz() {
       }
     }
     getQuestion();
-  }, []);
+  }, [next]);
 
   // Handle correct and incorrect answer
   async function handleClick(e) {
+    setSelected(true);
     // When answer is correct
     if (e.target.value === "correct") {
       await jsConfetti.addConfetti({
         emojis: ["🎉"],
       });
-      setSelected(true);
+      setNext(true);
     }
     // When answer is wrong
     else {
-      setSelected(true);
+      setTimeout(() => setNext(true), 2000);
     }
   }
 
