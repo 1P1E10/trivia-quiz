@@ -40,21 +40,22 @@ function Quiz() {
 
         // Randomize the choices
         setButtons(
-          choices.map((choice) => {
-            return (
-              <button
-                className={styles.btn}
-                onClick={handleClick}
-                value={choice.isCorrect}
-                disabled={selected}
-              >
-                {choice.choice}
-              </button>
-            );
-          })
+          choices
+            .map((choice) => {
+              return (
+                <button
+                  className={styles.btn}
+                  onClick={handleClick}
+                  value={choice.isCorrect}
+                  disabled={selected}
+                >
+                  {choice.choice}
+                </button>
+              );
+            })
+            .sort(() => Math.random() - 0.5)
         );
 
-        choices.sort(() => Math.random() - 0.5);
         setIsLoading(false);
         setQuestion(json[0].question);
       } catch (err) {
