@@ -1,19 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "../css/Quiz.module.css";
 import { AiFillHome } from "react-icons/ai";
 
 function Quiz() {
-  const navigate = useNavigate();
-
-  function handleClick() {
-    navigate("/");
-  }
-
   return (
     <div className={styles.page}>
-      <button className={styles.homeBtn} onClick={handleClick}>
+      <NavLink to="/" className={styles.homeBtn}>
         <AiFillHome />
-      </button>
+      </NavLink>
 
       <h2 className={styles.Question}>Who is McDonald's mascot?</h2>
 
