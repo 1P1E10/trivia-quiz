@@ -43,7 +43,7 @@ function Quiz() {
                 <button
                   className={`${styles.btn} ${
                     styles[`btn${index + 1}`]
-                  } disableBtn`}
+                  } choiceBtns`}
                   onClick={handleClick}
                   value={choice.isCorrect}
                 >
@@ -63,13 +63,13 @@ function Quiz() {
     getQuestion();
   }, [next]);
 
-  // Handle correct and incorrect answer
+  // Handle user's answer selection
   async function handleClick(e) {
-    const btns = document.getElementsByClassName("disableBtn");
-    btns[0].disabled = true;
-    btns[1].disabled = true;
-    btns[2].disabled = true;
-    btns[3].disabled = true;
+    const choiceBtns = document.getElementsByClassName("choiceBtns");
+    // Disable all choice buttons after the first click
+    for (let i = 0; i < choiceBtns.length; i++) {
+      choiceBtns[i].disabled = true;
+    }
 
     // When answer is correct
     if (e.target.value === "correct") {
