@@ -1,15 +1,21 @@
-.title {
-    font-size: 72px;
+.page {
+    height: 100vh;
+    background-color: #E2CCB4;
     text-align: center;
 }
 
-.page {
-    background-color: #E2CCB4;
+.title {
+    margin-top: 0;
+    font-size: 72px;
 }
 
 .difficultyLevelTitle {
     font-size: 48px;
-    text-align: center;
+}
+
+.checkbox {
+    margin: 0 45px 15px;
+    transform: scale(3);
 }
 
 .levelLabels {
