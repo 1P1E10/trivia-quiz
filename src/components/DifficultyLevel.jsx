@@ -1,14 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import styles from "../css/DifficultyLevel.module.css";
 import { BiPlayCircle } from "react-icons/bi";
 
 function DifficultyLevel() {
+  const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
+    navigate("/quiz");
   }
 
   return (
     <>
-      <h2 className={styles.title}>Difficulty Level</h2>
+      <h1 className={styles.title}>Trivia Quiz</h1>
+
+      <h2 className={styles.difficultyLevelTitle}>Difficulty Level</h2>
 
       <br />
 

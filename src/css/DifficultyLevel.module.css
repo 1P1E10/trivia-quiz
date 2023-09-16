@@ -1,4 +1,9 @@
 .title {
+    font-size: 72px;
+    text-align: center;
+}
+
+.difficultyLevelTitle {
     font-size: 48px;
     text-align: center;
 }
