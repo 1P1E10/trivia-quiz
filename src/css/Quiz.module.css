@@ -13,7 +13,7 @@
 }
 
 .Question {
-    margin-top: 90px;
+    margin: 90px 30px 0;
     font-size: 48px;
     text-align: center;
 }
@@ -37,6 +37,13 @@
     color: white;
     border-radius: 25px;
     border-color: transparent;
+}
+
+.btn1:hover,
+.btn2:hover,
+.btn3:hover,
+.btn4:hover {
+    border: solid #84c1d5 5px;
 }
 
 .btn1 {

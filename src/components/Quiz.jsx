@@ -23,6 +23,7 @@ function Quiz() {
   const [choiceTwoVal, setChoiceTwoVal] = useState("wrong");
   const [choiceThreeVal, setChoiceThreeVal] = useState("wrong");
   const [choiceFourVal, setChoiceFourVal] = useState("wrong");
+
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
@@ -60,16 +61,21 @@ function Quiz() {
       }
     }
     getQuestion();
-  }, [selected]);
+  }, []);
 
   // Handle correct and incorrect answer
   async function handleClick(e) {
+    // When answer is correct
     if (e.target.value === "correct") {
       await jsConfetti.addConfetti({
         emojis: ["🎉"],
       });
+      setSelected(true);
     }
-    setSelected(true);
+    // When answer is wrong
+    else {
+      setSelected(true);
+    }
   }
 
   return (
@@ -83,10 +89,12 @@ function Quiz() {
         <>
           <h2 className={styles.Question}>{question}</h2>
           <div className={styles.choices}>
+            {/* Disable the buttons after first click */}
             <button
               className={styles.btn1}
               onClick={handleClick}
               value={choiceOneVal}
+              disabled={selected}
             >
               {choiceOne}
             </button>
@@ -94,6 +102,7 @@ function Quiz() {
               className={styles.btn2}
               onClick={handleClick}
               value={choiceTwoVal}
+              disabled={selected}
             >
               {choiceTwo}
             </button>
@@ -101,6 +110,7 @@ function Quiz() {
               className={styles.btn3}
               onClick={handleClick}
               value={choiceThreeVal}
+              disabled={selected}
             >
               {choiceThree}
             </button>
@@ -108,6 +118,7 @@ function Quiz() {
               className={styles.btn4}
               onClick={handleClick}
               value={choiceFourVal}
+              disabled={selected}
             >
               {choiceFour}
             </button>
