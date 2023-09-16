@@ -12,18 +12,16 @@ function Quiz() {
   const apiUrl = `https://the-trivia-api.com/api/questions?difficulty=${difficulty}&categories=food_and_drink&limit=1`; // Why query param is difficulty not difficulties?
 
   const [isLoading, setIsLoading] = useState(false);
-
   const [question, setQuestion] = useState("");
-
   const [selected, setSelected] = useState(false);
   const [next, setNext] = useState(false);
-
   const [buttons, setButtons] = useState([]);
 
   useEffect(() => {
     setSelected(false);
     setNext(false);
     setIsLoading(true);
+    setButtons([]);
     async function getQuestion() {
       try {
         const response = await fetch(apiUrl);
@@ -32,24 +30,24 @@ function Quiz() {
           throw new Error("Failed to request quiz question");
         }
         let choices = [
-          { choice: json[0].correctAnswer, isCorrect: "correct" },
-          { choice: json[0].incorrectAnswers[0], isCorrect: "wrong" },
-          { choice: json[0].incorrectAnswers[1], isCorrect: "wrong" },
-          { choice: json[0].incorrectAnswers[2], isCorrect: "wrong" },
+          { option: json[0].correctAnswer, isCorrect: "correct" },
+          { option: json[0].incorrectAnswers[0], isCorrect: "wrong" },
+          { option: json[0].incorrectAnswers[1], isCorrect: "wrong" },
+          { option: json[0].incorrectAnswers[2], isCorrect: "wrong" },
         ];
 
         // Randomize the choices
         setButtons(
           choices
-            .map((choice) => {
+            .map((choice, index) => {
               return (
+                // Assign different colors from CSS file to the buttons
                 <button
-                  className={styles.btn}
+                  className={`${styles.btn} ${styles[`btn${index}`]}`}
                   onClick={handleClick}
                   value={choice.isCorrect}
-                  disabled={selected}
                 >
-                  {choice.choice}
+                  {choice.option}
                 </button>
               );
             })
@@ -63,7 +61,7 @@ function Quiz() {
       }
     }
     getQuestion();
-  }, []);
+  }, [next]);
 
   // Handle correct and incorrect answer
   async function handleClick(e) {
@@ -89,46 +87,11 @@ function Quiz() {
         <AiFillHome />
       </NavLink>
       {isLoading ? (
-        <h2 className={styles.Question}>Loading...</h2>
+        <h2 className={styles.question}>Loading...</h2>
       ) : (
         <>
-          <h2 className={styles.Question}>{question}</h2>
-          <div className={styles.choices}>
-            {buttons}
-            {/* Debugging */}
-            {/* <button
-              className={styles.btn1}
-              onClick={handleClick}
-              value={choiceOneVal}
-              disabled={selected}
-            >
-              {choiceOne}
-            </button>
-            <button
-              className={styles.btn2}
-              onClick={handleClick}
-              value={choiceTwoVal}
-              disabled={selected}
-            >
-              {choiceTwo}
-            </button>
-            <button
-              className={styles.btn3}
-              onClick={handleClick}
-              value={choiceThreeVal}
-              disabled={selected}
-            >
-              {choiceThree}
-            </button>
-            <button
-              className={styles.btn4}
-              onClick={handleClick}
-              value={choiceFourVal}
-              disabled={selected}
-            >
-              {choiceFour}
-            </button> */}
-          </div>
+          <h2 className={styles.question}>{question}</h2>
+          <div className={styles.choices}>{buttons}</div>
         </>
       )}
     </div>
