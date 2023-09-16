@@ -70,6 +70,7 @@ function Quiz() {
     setSelected(true);
     // When answer is correct
     if (e.target.value === "correct") {
+      e.target.style.backgroundColor = "green";
       await jsConfetti.addConfetti({
         emojis: ["🎉"],
       });
@@ -77,6 +78,7 @@ function Quiz() {
     }
     // When answer is wrong
     else {
+      e.target.style.backgroundColor = "red";
       setTimeout(() => setNext(true), 2000);
     }
   }

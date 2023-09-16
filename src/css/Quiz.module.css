@@ -51,7 +51,7 @@
 .btn3:disabled,
 .btn4:disabled {
     border-color: transparent;
-    background-color: #c7bcbc;
+    background-color: #cccccc;
 }
 
 .btn1 {
@@ -59,11 +59,11 @@
 }
 
 .btn2 {
-    background-color: #008000;
+    background-color: Lime;
 }
 
 .btn3 {
-    background-color: #F20505;
+    background-color: salmon;
 }
 
 .btn4 {
