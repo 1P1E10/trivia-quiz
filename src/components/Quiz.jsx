@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
-import { NavLink, useParams, useSearchParams } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import styles from "../css/Quiz.module.css";
 import { AiFillHome } from "react-icons/ai";
+import JSConfetti from "js-confetti";
 
 function Quiz() {
+  const jsConfetti = new JSConfetti();
+
   const [searchParams] = useSearchParams();
   const difficulties = searchParams.get("difficulties");
   const apiUrl = `https://the-trivia-api.com/api/questions/?categories=food_and_drink&difficulties=${difficulties}&limit=1`;
@@ -14,10 +17,10 @@ function Quiz() {
   const [choiceTwo, setChoiceTwo] = useState("");
   const [choiceThree, setChoiceThree] = useState("");
   const [choiceFour, setChoiceFour] = useState("");
-  const [choiceOneVal, setChoiceOneVal] = useState(false);
-  const [choiceTwoVal, setChoiceTwoVal] = useState(false);
-  const [choiceThreeVal, setChoiceThreeVal] = useState(false);
-  const [choiceFourVal, setChoiceFourVal] = useState(false);
+  const [choiceOneVal, setChoiceOneVal] = useState("wrong");
+  const [choiceTwoVal, setChoiceTwoVal] = useState("wrong");
+  const [choiceThreeVal, setChoiceThreeVal] = useState("wrong");
+  const [choiceFourVal, setChoiceFourVal] = useState("wrong");
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,10 +34,10 @@ function Quiz() {
 
         // Randomize the choices' order
         let choices = [
-          { choice: json[0].correctAnswer, isCorrect: true },
-          { choice: json[0].incorrectAnswers[0], isCorrect: false },
-          { choice: json[0].incorrectAnswers[1], isCorrect: false },
-          { choice: json[0].incorrectAnswers[2], isCorrect: false },
+          { choice: json[0].correctAnswer, isCorrect: "correct" },
+          { choice: json[0].incorrectAnswers[0], isCorrect: "wrong" },
+          { choice: json[0].incorrectAnswers[1], isCorrect: "wrong" },
+          { choice: json[0].incorrectAnswers[2], isCorrect: "wrong" },
         ];
         choices.sort(() => Math.random() - 0.5);
         setIsLoading(false);
@@ -55,7 +58,11 @@ function Quiz() {
   }, []);
 
   function handleClick(e) {
-    console.log(e.target.value);
+    if (e.target.value === "correct") {
+      jsConfetti.addConfetti({
+        emojis: ["🎉"],
+      });
+    }
   }
 
   return (
