@@ -9,7 +9,9 @@ function Quiz() {
 
   const [searchParams] = useSearchParams();
   const difficulties = searchParams.get("difficulties");
-  const apiUrl = `https://the-trivia-api.com/api/questions/?categories=food_and_drink&difficulties=${difficulties}&limit=1`;
+  const apiUrl = `https://the-trivia-api.com/api/questions?categories=food_and_drink&difficulties=${difficulties}&limit=1`;
+
+  console.log(apiUrl);
 
   const [isLoading, setIsLoading] = useState(false);
   const [question, setQuestion] = useState("");
@@ -50,6 +52,7 @@ function Quiz() {
         setChoiceTwoVal(choices[1].isCorrect);
         setChoiceThreeVal(choices[2].isCorrect);
         setChoiceFourVal(choices[3].isCorrect);
+        console.log(json[0]);
       } catch (err) {
         console.log(err);
       }
