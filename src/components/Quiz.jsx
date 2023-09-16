@@ -15,16 +15,6 @@ function Quiz() {
 
   const [question, setQuestion] = useState("");
 
-  const [choiceOne, setChoiceOne] = useState("");
-  const [choiceTwo, setChoiceTwo] = useState("");
-  const [choiceThree, setChoiceThree] = useState("");
-  const [choiceFour, setChoiceFour] = useState("");
-
-  const [choiceOneVal, setChoiceOneVal] = useState("wrong");
-  const [choiceTwoVal, setChoiceTwoVal] = useState("wrong");
-  const [choiceThreeVal, setChoiceThreeVal] = useState("wrong");
-  const [choiceFourVal, setChoiceFourVal] = useState("wrong");
-
   const [selected, setSelected] = useState(false);
   const [next, setNext] = useState(false);
 
@@ -50,7 +40,7 @@ function Quiz() {
 
         // Randomize the choices
         setButtons(
-          choices.map((choice, index) => {
+          choices.map((choice) => {
             return (
               <button
                 className={styles.btn}
@@ -67,14 +57,6 @@ function Quiz() {
         choices.sort(() => Math.random() - 0.5);
         setIsLoading(false);
         setQuestion(json[0].question);
-        setChoiceOne(choices[0].choice);
-        setChoiceTwo(choices[1].choice);
-        setChoiceThree(choices[2].choice);
-        setChoiceFour(choices[3].choice);
-        setChoiceOneVal(choices[0].isCorrect);
-        setChoiceTwoVal(choices[1].isCorrect);
-        setChoiceThreeVal(choices[2].isCorrect);
-        setChoiceFourVal(choices[3].isCorrect);
       } catch (err) {
         console.log(err);
       }
