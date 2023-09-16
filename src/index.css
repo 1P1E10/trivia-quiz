@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #E2CCB4;
+  font-family: inter, monospace;
+}
+
+h1 {
+  font-size: 72px;
+  text-align: center;
+}
