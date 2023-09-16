@@ -8,8 +8,8 @@ function Quiz() {
   const jsConfetti = new JSConfetti();
 
   const [searchParams] = useSearchParams();
-  const difficulties = searchParams.get("difficulties");
-  const apiUrl = `https://the-trivia-api.com/api/questions?categories=food_and_drink&difficulties=${difficulties}&limit=1`;
+  const difficulty = searchParams.get("difficulty");
+  const apiUrl = `https://the-trivia-api.com/api/questions?difficulty=${difficulty}&categories=food_and_drink&limit=1&region=US`; // Why query param is difficulty not difficulties?
 
   console.log(apiUrl);
 
@@ -60,6 +60,7 @@ function Quiz() {
     getQuestion();
   }, []);
 
+  // Handle correct and incorrect answer
   function handleClick(e) {
     if (e.target.value === "correct") {
       jsConfetti.addConfetti({

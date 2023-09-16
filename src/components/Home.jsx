@@ -7,7 +7,7 @@ function Home() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    navigate("/quiz?difficulties=easy");
+    navigate("/quiz?difficulty=easy");
   }
 
   return (
