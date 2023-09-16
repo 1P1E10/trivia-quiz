@@ -12,14 +12,14 @@ function Quiz() {
   const apiUrl = `https://the-trivia-api.com/api/questions?limit=1&difficulty=${difficulty}&categories=food_and_drink`; // Why query param is difficulty not difficulties?
 
   const [isLoading, setIsLoading] = useState(false);
-  const [next, setNext] = useState(false);
   const [question, setQuestion] = useState("");
   const [choices, setChoices] = useState([]);
+  const [next, setNext] = useState(false);
 
   useEffect(() => {
     setNext(false);
     setIsLoading(true);
-    setChoices([]);
+
     async function getQuestion() {
       try {
         const response = await fetch(apiUrl);

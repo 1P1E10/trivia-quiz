@@ -13,42 +13,40 @@ function Home() {
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>Trivia Quiz</h1>
-
       <h2 className={styles.difficultyLevelTitle}>Difficulty Level</h2>
-
       <br />
 
-      <div className={styles.levelCheckboxes}>
-        <input
-          id="easy"
-          className={styles.checkbox}
-          name="level"
-          type="checkbox"
-          value="easy"
-        />
-        <input
-          id="medium"
-          className={styles.checkbox}
-          name="level"
-          type="checkbox"
-          value="medium"
-        />
-        <input
-          id="hard"
-          className={styles.checkbox}
-          name="level"
-          type="checkbox"
-          value="hard"
-        />
-      </div>
-
-      <div className={styles.levelLabels}>
-        <label htmlFor="easy">Easy</label>
-        <label htmlFor="medium">Medium</label>
-        <label htmlFor="hard">Hard</label>
-      </div>
-
       <form onSubmit={handleSubmit}>
+        <div className={styles.levelCheckboxes}>
+          <input
+            id="easy"
+            className={styles.checkbox}
+            name="level"
+            type="checkbox"
+            value="easy"
+          />
+          <input
+            id="medium"
+            className={styles.checkbox}
+            name="level"
+            type="checkbox"
+            value="medium"
+          />
+          <input
+            id="hard"
+            className={styles.checkbox}
+            name="level"
+            type="checkbox"
+            value="hard"
+          />
+        </div>
+
+        <div className={styles.levelLabels}>
+          <label htmlFor="easy">Easy</label>
+          <label htmlFor="medium">Medium</label>
+          <label htmlFor="hard">Hard</label>
+        </div>
+
         <button className={styles.playBtn}>
           <BiPlayCircle />
         </button>
