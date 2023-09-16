@@ -1,0 +1,47 @@
+.page {
+    background-color: #F5F5F5;
+}
+
+.homeBtn {
+    font-size: 72px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.Question {
+    font-size: 48px;
+    text-align: center;
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btn1,
+.btn2,
+.btn3,
+.btn4 {
+    height: 100px;
+    width: 300px;
+    font-size: 36px;
+    color: white;
+    border-radius: 25px;
+    border-color: transparent;
+}
+
+.btn1 {
+    background-color: #4D49BF;
+}
+
+.btn2 {
+    background-color: #008000;
+}
+
+.btn3 {
+    background-color: #F20505;
+}
+
+.btn4 {
+    background-color: #FFA500;
+}
