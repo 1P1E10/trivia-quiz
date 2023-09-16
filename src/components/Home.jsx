@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import styles from "../css/DifficultyLevel.module.css";
+import styles from "../css/Home.module.css";
 import { BiPlayCircle } from "react-icons/bi";
 
-function DifficultyLevel() {
+function Home() {
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -57,4 +57,4 @@ function DifficultyLevel() {
   );
 }
 
-export default DifficultyLevel;
+export default Home;

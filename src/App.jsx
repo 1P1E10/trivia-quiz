@@ -4,13 +4,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import DifficultyLevel from "./components/DifficultyLevel";
+import Home from "./components/Home";
 import Quiz from "./components/Quiz";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<DifficultyLevel />} />
+      <Route path="/" element={<Home />} />
       <Route path="quiz" element={<Quiz />} />
     </>
   )
