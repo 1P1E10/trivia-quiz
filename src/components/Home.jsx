@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/Home.module.css";
 import { BiPlayCircle } from "react-icons/bi";
 
 function Home() {
+  const [level, setLevel] = useState(null);
+
   const navigate = useNavigate();
+
+  function handleChange(e) {
+    setLevel(e.target.value);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,6 +30,8 @@ function Home() {
           name="level"
           type="radio"
           value="easy"
+          checked={level === "easy"}
+          onChange={handleChange}
         />
         <input
           id="medium"
@@ -30,6 +39,8 @@ function Home() {
           name="level"
           type="radio"
           value="medium"
+          checked={level === "medium"}
+          onChange={handleChange}
         />
         <input
           id="hard"
@@ -37,6 +48,8 @@ function Home() {
           name="level"
           type="radio"
           value="hard"
+          checked={level === "hard"}
+          onChange={handleChange}
         />
 
         <div className={styles.levelLabels}>
