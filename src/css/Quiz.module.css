@@ -5,26 +5,32 @@
 
 .homeBtn {
     font-size: 72px;
+    margin: 30px 0 0 45px;
     border-color: transparent;
     background-color: transparent;
 }
 
 .Question {
+    margin-top: 90px;
     font-size: 48px;
     text-align: center;
 }
 
 .choices {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 600px);
+    justify-content: center;
+    gap: 90px;
+    margin-top: 200px;
 }
 
 .btn1,
 .btn2,
 .btn3,
 .btn4 {
-    height: 100px;
-    width: 300px;
+    justify-self: center;
+    height: 120px;
+    width: 350px;
     font-size: 36px;
     color: white;
     border-radius: 25px;
