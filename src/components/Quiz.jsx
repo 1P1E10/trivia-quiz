@@ -23,8 +23,10 @@ function Quiz() {
   const [choiceTwoVal, setChoiceTwoVal] = useState("wrong");
   const [choiceThreeVal, setChoiceThreeVal] = useState("wrong");
   const [choiceFourVal, setChoiceFourVal] = useState("wrong");
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
+    setSelected(false);
     setIsLoading(true);
     async function getQuestion() {
       try {
@@ -58,7 +60,7 @@ function Quiz() {
       }
     }
     getQuestion();
-  }, []);
+  }, [selected]);
 
   // Handle correct and incorrect answer
   function handleClick(e) {
@@ -67,6 +69,7 @@ function Quiz() {
         emojis: ["🎉"],
       });
     }
+    setSelected(true);
   }
 
   return (
