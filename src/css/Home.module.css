@@ -6,15 +6,17 @@
 
 .title {
     margin-top: 0;
-    font-size: 72px;
+    padding-top: 220px;
+    font-size: 84px;
 }
 
 .difficultyLevelTitle {
+    margin-top: 120px;
     font-size: 48px;
 }
 
 .checkbox {
-    margin: 0 45px 15px;
+    margin: 0 55px 15px;
     transform: scale(3);
 }
 
@@ -24,9 +26,13 @@
     font-size: 36px;
 }
 
+.levelLabels label {
+    margin: 0 10px 0;
+}
 
 .playBtn {
-    font-size: 80px;
+    margin-top: 30px;
+    font-size: 128px;
     border-color: transparent;
     background-color: transparent;
 }
