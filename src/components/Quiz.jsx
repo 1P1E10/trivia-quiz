@@ -12,8 +12,8 @@ function Quiz() {
   const apiUrl = `https://the-trivia-api.com/api/questions?difficulty=${difficulty}&categories=food_and_drink&limit=1`; // Why query param is difficulty not difficulties?
 
   const [isLoading, setIsLoading] = useState(false);
-  const [question, setQuestion] = useState("");
   const [next, setNext] = useState(false);
+  const [question, setQuestion] = useState("");
   const [buttons, setButtons] = useState([]);
 
   useEffect(() => {
@@ -41,7 +41,9 @@ function Quiz() {
               return (
                 // Assign different colors from CSS file to the buttons
                 <button
-                  className={`${styles.btn} ${styles[`btn${index + 1}`]}`}
+                  className={`${styles.btn} ${
+                    styles[`btn${index + 1}`]
+                  } disableBtn`}
                   onClick={handleClick}
                   value={choice.isCorrect}
                 >
@@ -63,6 +65,12 @@ function Quiz() {
 
   // Handle correct and incorrect answer
   async function handleClick(e) {
+    const btns = document.getElementsByClassName("disableBtn");
+    btns[0].disabled = true;
+    btns[1].disabled = true;
+    btns[2].disabled = true;
+    btns[3].disabled = true;
+
     // When answer is correct
     if (e.target.value === "correct") {
       e.target.style.backgroundColor = "green";
