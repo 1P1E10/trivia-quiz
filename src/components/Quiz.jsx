@@ -13,12 +13,10 @@ function Quiz() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [question, setQuestion] = useState("");
-  const [selected, setSelected] = useState(false);
   const [next, setNext] = useState(false);
   const [buttons, setButtons] = useState([]);
 
   useEffect(() => {
-    setSelected(false);
     setNext(false);
     setIsLoading(true);
     setButtons([]);
@@ -43,7 +41,7 @@ function Quiz() {
               return (
                 // Assign different colors from CSS file to the buttons
                 <button
-                  className={`${styles.btn} ${styles[`btn${index}`]}`}
+                  className={`${styles.btn} ${styles[`btn${index + 1}`]}`}
                   onClick={handleClick}
                   value={choice.isCorrect}
                 >
@@ -65,7 +63,6 @@ function Quiz() {
 
   // Handle correct and incorrect answer
   async function handleClick(e) {
-    setSelected(true);
     // When answer is correct
     if (e.target.value === "correct") {
       e.target.style.backgroundColor = "green";
