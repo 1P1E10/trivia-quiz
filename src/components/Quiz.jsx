@@ -9,16 +9,17 @@ function Quiz() {
 
   const [searchParams] = useSearchParams();
   const difficulty = searchParams.get("difficulty");
-  const apiUrl = `https://the-trivia-api.com/api/questions?difficulty=${difficulty}&categories=food_and_drink&limit=1&region=US`; // Why query param is difficulty not difficulties?
-
-  console.log(apiUrl);
+  const apiUrl = `https://the-trivia-api.com/api/questions?difficulty=${difficulty}&categories=food_and_drink&limit=1`; // Why query param is difficulty not difficulties?
 
   const [isLoading, setIsLoading] = useState(false);
+
   const [question, setQuestion] = useState("");
+
   const [choiceOne, setChoiceOne] = useState("");
   const [choiceTwo, setChoiceTwo] = useState("");
   const [choiceThree, setChoiceThree] = useState("");
   const [choiceFour, setChoiceFour] = useState("");
+
   const [choiceOneVal, setChoiceOneVal] = useState("wrong");
   const [choiceTwoVal, setChoiceTwoVal] = useState("wrong");
   const [choiceThreeVal, setChoiceThreeVal] = useState("wrong");
@@ -26,6 +27,8 @@ function Quiz() {
 
   const [selected, setSelected] = useState(false);
   const [next, setNext] = useState(false);
+
+  const [buttons, setButtons] = useState([]);
 
   useEffect(() => {
     setSelected(false);
@@ -38,14 +41,22 @@ function Quiz() {
         if (!response.ok) {
           throw new Error("Failed to request quiz question");
         }
-
-        // Randomize the choices' order
         let choices = [
           { choice: json[0].correctAnswer, isCorrect: "correct" },
           { choice: json[0].incorrectAnswers[0], isCorrect: "wrong" },
           { choice: json[0].incorrectAnswers[1], isCorrect: "wrong" },
           { choice: json[0].incorrectAnswers[2], isCorrect: "wrong" },
         ];
+
+        // Randomize the choices
+        setButtons(
+          choices
+            .map((choice) => {
+              return <button>{choice.choice}</button>;
+            })
+            .sort(() => Math.random() - 0.5)
+        );
+
         choices.sort(() => Math.random() - 0.5);
         setIsLoading(false);
         setQuestion(json[0].question);
@@ -57,7 +68,6 @@ function Quiz() {
         setChoiceTwoVal(choices[1].isCorrect);
         setChoiceThreeVal(choices[2].isCorrect);
         setChoiceFourVal(choices[3].isCorrect);
-        console.log(json[0]);
       } catch (err) {
         console.log(err);
       }
@@ -85,6 +95,7 @@ function Quiz() {
 
   return (
     <div className={styles.page}>
+      <h3>{buttons}</h3> {/* Debugging */}
       <NavLink to="/" className={styles.homeBtn}>
         <AiFillHome />
       </NavLink>
