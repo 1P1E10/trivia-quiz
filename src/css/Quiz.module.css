@@ -1,5 +1,5 @@
 .page {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #F5DDDB;
 }
 
@@ -59,4 +59,27 @@
 
 .btn4 {
     background-color: #FFA500;
+}
+
+@media only screen and (max-width: 500px) {
+    .homeBtn {
+        margin: 20px 0 10px 20px;
+        font-size: 32px;
+    }
+
+    .question {
+        margin: 20px 8px 0;
+        font-size: 24px;
+    }
+
+    .choices {
+        grid-template-columns: repeat(1, 300px);
+        margin: 20px 0 0;
+        gap: 20px;
+    }
+
+    .btn {
+        height: 80px;
+        font-size: 24px;
+    }
 }

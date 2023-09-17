@@ -1,5 +1,5 @@
 .page {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #E2CCB4;
     text-align: center;
 }
@@ -44,4 +44,29 @@
 
 .playBtn:active {
     color: purple;
+}
+
+@media only screen and (max-width: 500px) {
+    .title {
+        font-size: 48px;
+        padding-top: 120px;
+    }
+
+    .difficultyLevelTitle {
+        margin-top: 60px;
+        font-size: 36px;
+    }
+
+    .radioBtn {
+        margin: 0 40px 16px;
+        transform: scal(1.2);
+    }
+
+    .levelLabels {
+        font-size: 24px;
+    }
+
+    .playBtn {
+        font-size: 84px;
+    }
 }
