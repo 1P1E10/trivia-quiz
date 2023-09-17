@@ -61,14 +61,32 @@
     background-color: #FFA500;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1200px) {
+
+    .question {
+        margin-top: 220px;
+        font-size: 36px;
+    }
+
+    .choices {
+        grid-template-columns: repeat(2, 400px);
+        gap: 40px;
+        margin-top: 100px;
+    }
+
+    .btn {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
     .homeBtn {
         margin: 20px 0 10px 20px;
         font-size: 32px;
     }
 
     .question {
-        margin: 20px 8px 0;
+        margin: 50px 8px 0;
         font-size: 24px;
     }
 
@@ -80,6 +98,5 @@
 
     .btn {
         height: 80px;
-        font-size: 24px;
     }
 }
