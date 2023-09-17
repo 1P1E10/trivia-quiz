@@ -5,13 +5,11 @@ import { BiPlayCircle } from "react-icons/bi";
 
 function Home() {
   const [level, setLevel] = useState("easy"); // Quiz difficulty level
-
-  const navigate = useNavigate();
-
   function handleChange(e) {
     setLevel(e.target.value);
   }
 
+  const navigate = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
     navigate(`/quiz?difficulty=${level}`);
