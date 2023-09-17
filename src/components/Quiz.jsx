@@ -12,6 +12,7 @@ function Quiz() {
   const apiUrl = `https://the-trivia-api.com/api/questions?limit=1&difficulty=${difficulty}&categories=food_and_drink`; // Why query param is difficulty not difficulties?
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [question, setQuestion] = useState("");
   const [choices, setChoices] = useState([]);
   const [next, setNext] = useState(false);
@@ -25,7 +26,7 @@ function Quiz() {
         const response = await fetch(apiUrl);
         const json = await response.json();
         if (!response.ok) {
-          throw new Error("Failed to request quiz question");
+          throw new Error("Failed to get quiz data");
         }
         let choices = [
           { option: json[0].correctAnswer, isCorrect: "correct" },
@@ -53,11 +54,12 @@ function Quiz() {
             })
             .sort(() => Math.random() - 0.5)
         );
-
-        setIsLoading(false);
         setQuestion(json[0].question);
       } catch (err) {
         console.log(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
     }
     getQuestion();
@@ -92,14 +94,14 @@ function Quiz() {
       <NavLink to="/" className={styles.homeBtn}>
         <AiFillHome />
       </NavLink>
-      {isLoading ? (
-        <h2 className={styles.question}>Loading...</h2>
-      ) : (
+      {isLoading && <h2 className={styles.question}>Loading...</h2>}
+      {!isLoading && !error && (
         <>
           <h2 className={styles.question}>{question}</h2>
           <div className={styles.choices}>{choices}</div>
         </>
       )}
+      {error && <h2 className={styles.question}>{error}</h2>}
     </div>
   );
 }
