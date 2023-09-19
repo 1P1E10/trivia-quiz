@@ -16,19 +16,23 @@
     font-size: 48px;
 }
 
-.radioBtn {
+.levelOptions {
+    display: flex;
+    justify-content: center;
+}
+
+.radioLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio {
     margin: 0 55px 15px;
     transform: scale(3);
 }
 
-.levelLabels {
-    display: flex;
-    justify-content: center;
+.levelLabel {
     font-size: 36px;
-}
-
-.levelLabels label {
-    margin: 0 10px 0;
 }
 
 .playBtn {
@@ -58,12 +62,12 @@
         font-size: 36px;
     }
 
-    .radioBtn {
+    .radio {
         margin: 0 40px 16px;
         transform: scal(1.2);
     }
 
-    .levelLabels {
+    .levelLabel {
         font-size: 24px;
     }
 

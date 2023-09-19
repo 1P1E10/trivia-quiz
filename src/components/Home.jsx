@@ -22,40 +22,50 @@ function Home() {
       <br />
 
       <form onSubmit={handleSubmit}>
-        <input
-          id="easy"
-          className={styles.radioBtn}
-          name="level"
-          type="radio"
-          value="easy"
-          checked={level === "easy"}
-          onChange={handleChange}
-        />
-        <input
-          id="medium"
-          className={styles.radioBtn}
-          name="level"
-          type="radio"
-          value="medium"
-          checked={level === "medium"}
-          onChange={handleChange}
-        />
-        <input
-          id="hard"
-          className={styles.radioBtn}
-          name="level"
-          type="radio"
-          value="hard"
-          checked={level === "hard"}
-          onChange={handleChange}
-        />
-
-        <div className={styles.levelLabels}>
-          <label htmlFor="easy">Easy</label>
-          <label htmlFor="medium">Medium</label>
-          <label htmlFor="hard">Hard</label>
+        <div className={styles.levelOptions}>
+          <div className={styles.radioLabel}>
+            <input
+              id="easy"
+              className={styles.radio}
+              name="level"
+              type="radio"
+              value="easy"
+              checked={level === "easy"}
+              onChange={handleChange}
+            />
+            <label className={styles.levelLabel} htmlFor="easy">
+              Easy
+            </label>
+          </div>
+          <div className={styles.radioLabel}>
+            <input
+              id="medium"
+              className={styles.radio}
+              name="level"
+              type="radio"
+              value="medium"
+              checked={level === "medium"}
+              onChange={handleChange}
+            />
+            <label className={styles.levelLabel} htmlFor="medium">
+              Medium
+            </label>
+          </div>
+          <div className={styles.radioLabel}>
+            <input
+              id="hard"
+              className={styles.radio}
+              name="level"
+              type="radio"
+              value="hard"
+              checked={level === "hard"}
+              onChange={handleChange}
+            />
+            <label className={styles.levelLabel} htmlFor="hard">
+              Hard
+            </label>
+          </div>
         </div>
-
         <button className={styles.playBtn}>
           <BiPlayCircle />
         </button>
