@@ -79,7 +79,7 @@ function Quiz() {
 
     if (target.value === "correct") {
       await jsConfetti.addConfetti({
-        emojis: ["🎉", "🎊"],
+        emojis: ["🎉", "🏆"],
       });
       setNext(true);
     } else {

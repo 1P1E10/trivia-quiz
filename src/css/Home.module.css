@@ -6,7 +6,7 @@
 
 .title {
     /* Why need to do this to remove the top margin? Already set margin: 0 in index.css*/
-    margin-top: 0;
+    margin: 0;
     padding-top: 220px;
     font-size: 84px;
 }
