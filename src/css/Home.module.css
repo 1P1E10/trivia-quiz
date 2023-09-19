@@ -36,6 +36,7 @@
     font-size: 128px;
     border-color: transparent;
     background-color: transparent;
+    color: black;
 }
 
 .playBtn:hover {

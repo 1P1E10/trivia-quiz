@@ -28,23 +28,25 @@ function Quiz() {
         if (!response.ok) {
           throw new Error("Failed to get quiz data");
         }
-        let choices = [
+
+        setQuestion(json[0].question);
+
+        const choices = [
           { option: json[0].correctAnswer, isCorrect: "correct" },
           { option: json[0].incorrectAnswers[0], isCorrect: "wrong" },
           { option: json[0].incorrectAnswers[1], isCorrect: "wrong" },
           { option: json[0].incorrectAnswers[2], isCorrect: "wrong" },
         ];
 
-        // Randomize the choices
         setChoices(
           choices
             .map((choice, index) => {
               return (
                 // Assign different colors from CSS file to the buttons
                 <button
-                  className={`${styles.btn} ${
-                    styles[`btn${index + 1}`]
-                  } choiceBtns`}
+                  className={`${styles.choice} ${
+                    styles[`choice${index + 1}`]
+                  } choice`}
                   onClick={handleClick}
                   value={choice.isCorrect}
                 >
@@ -52,9 +54,8 @@ function Quiz() {
                 </button>
               );
             })
-            .sort(() => Math.random() - 0.5)
+            .sort(() => Math.random() - 0.5) // Randomize the order of the choices
         );
-        setQuestion(json[0].question);
       } catch (err) {
         console.log(err);
         setError(err.message);
@@ -65,33 +66,31 @@ function Quiz() {
     getQuestion();
   }, [next]);
 
-  // Handle user's answer selection
-  async function handleClick(e) {
-    const choiceBtns = document.getElementsByClassName("choiceBtns");
-    for (let i = 0; i < choiceBtns.length; i++) {
-      choiceBtns[i].disabled = true; // Disable all choice buttons after the first click
-      if (choiceBtns[i].value === "correct") {
-        choiceBtns[i].style.backgroundColor = "green";
+  // Handle user's answer choice
+  async function handleClick({ target }) {
+    const choice = document.getElementsByClassName("choice");
+    for (let i = 0; i < choice.length; i++) {
+      choice[i].disabled = true; // Only allow the user to select a choice once
+      // Highlight the correct choice after the user chooses one
+      if (choice[i].value === "correct") {
+        choice[i].style.backgroundColor = "green";
       }
     }
 
-    // When answer is correct
-    if (e.target.value === "correct") {
+    if (target.value === "correct") {
       await jsConfetti.addConfetti({
         emojis: ["🎉", "🎊"],
       });
       setNext(true);
-    }
-    // When answer is wrong
-    else {
-      e.target.style.backgroundColor = "red";
-      setTimeout(() => setNext(true), 2000);
+    } else {
+      target.style.backgroundColor = "red";
+      setTimeout(() => setNext(true), 1800);
     }
   }
 
   return (
     <div className={styles.page}>
-      <NavLink to="/" className={styles.homeBtn}>
+      <NavLink to="/" className={styles.home}>
         <AiFillHome />
       </NavLink>
       {isLoading && <h2 className={styles.question}>Loading...</h2>}

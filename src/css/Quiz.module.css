@@ -3,13 +3,11 @@
     background-color: #f2e49c99;
 }
 
-.homeBtn {
+.home {
     display: inline-block;
     font-size: 72px;
     margin: 30px 0 0 45px;
     color: #0A0761;
-    border-color: transparent;
-    background-color: transparent;
 }
 
 .question {
@@ -26,7 +24,7 @@
     margin-top: 200px;
 }
 
-.btn {
+.choice {
     justify-self: center;
     height: 120px;
     width: 350px;
@@ -36,28 +34,28 @@
     border-color: transparent;
 }
 
-.btn:hover {
+.choice:hover {
     border: solid #84c1d5 5px;
 }
 
-.btn:disabled {
+.choice:disabled {
     border-color: transparent;
     background-color: #cccccc;
 }
 
-.btn1 {
+.choice1 {
     background-color: #4D49BF;
 }
 
-.btn2 {
+.choice2 {
     background-color: Lime;
 }
 
-.btn3 {
-    background-color: salmon;
+.choice3 {
+    background-color: #eb7b6f;
 }
 
-.btn4 {
+.choice4 {
     background-color: #FFA500;
 }
 
@@ -74,13 +72,13 @@
         margin-top: 100px;
     }
 
-    .btn {
+    .choice {
         font-size: 24px;
     }
 }
 
 @media only screen and (max-width: 800px) {
-    .homeBtn {
+    .home {
         margin: 20px 0 10px 20px;
         font-size: 32px;
     }
@@ -96,7 +94,7 @@
         gap: 20px;
     }
 
-    .btn {
+    .choice {
         height: 80px;
     }
 }
