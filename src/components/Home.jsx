@@ -66,7 +66,7 @@ function Home() {
             </label>
           </div>
         </div>
-        <button className={styles.playBtn}>
+        <button className={styles.play}>
           <BiPlayCircle />
         </button>
       </form>

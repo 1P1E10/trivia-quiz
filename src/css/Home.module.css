@@ -35,20 +35,12 @@
     font-size: 36px;
 }
 
-.playBtn {
+.play {
     margin-top: 30px;
     font-size: 128px;
     border-color: transparent;
     background-color: transparent;
     color: black;
-}
-
-.playBtn:hover {
-    transform: scale(1.1);
-}
-
-.playBtn:active {
-    color: purple;
 }
 
 @media only screen and (max-width: 500px) {
@@ -64,14 +56,14 @@
 
     .radio {
         margin: 0 40px 16px;
-        transform: scal(1.2);
+        transform: scale(2);
     }
 
     .levelLabel {
         font-size: 24px;
     }
 
-    .playBtn {
+    .play {
         font-size: 84px;
     }
 }
