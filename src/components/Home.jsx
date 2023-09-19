@@ -19,7 +19,6 @@ function Home() {
     <div className={styles.page}>
       <h1 className={styles.title}>Trivia Quiz</h1>
       <h2 className={styles.difficultyLevelTitle}>Difficulty Level</h2>
-      <br />
 
       <form onSubmit={handleSubmit}>
         <div className={styles.levelOptions}>

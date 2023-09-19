@@ -32,6 +32,7 @@
     color: white;
     border-radius: 25px;
     border-color: transparent;
+    cursor: pointer
 }
 
 .choice:hover {
