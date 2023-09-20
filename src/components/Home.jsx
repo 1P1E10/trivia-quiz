@@ -20,9 +20,7 @@ function Home() {
       <h1 className={styles.title}>Trivia Quiz</h1>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <legend className={styles.difficultyLevelTitle}>
-          Difficulty Level
-        </legend>
+        <h2 className={styles.difficultyLevelTitle}>Difficulty Level</h2>
         <div className={styles.levelOptions}>
           <div className={styles.radioLabel}>
             <input
