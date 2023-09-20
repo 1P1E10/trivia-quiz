@@ -20,5 +20,6 @@ This project is developed in React using the Vite build tool. It allows users to
 
 ## What I learned from this project
 
-- Use radio button and label in React
+- Add more than one classNames when using CSS module in React: `` className={`${styles.classOne} ${styles.classTwo}`} ``
 - Display loading status and errors, in addition to the actual data, when fetching data from an external API for improved usability
+- Use radio button and label in React

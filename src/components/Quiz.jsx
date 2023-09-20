@@ -89,7 +89,7 @@ function Quiz() {
   }
 
   return (
-    <div className={styles.page}>
+    <>
       <NavLink to="/" className={styles.home}>
         <AiFillHome />
       </NavLink>
@@ -101,7 +101,7 @@ function Quiz() {
         </>
       )}
       {error && <h2 className={styles.question}>{error}</h2>}
-    </div>
+    </>
   );
 }
 

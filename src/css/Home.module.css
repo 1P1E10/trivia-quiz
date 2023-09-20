@@ -1,14 +1,11 @@
-.page {
-    min-height: 100vh;
-    background-color: #f2e49c99;
+.title {
+    margin-top: 220px;
+    font-size: 84px;
     text-align: center;
 }
 
-.title {
-    /* Why need to do this to remove the top margin? Already set margin: 0 in index.css*/
-    margin: 0;
-    padding-top: 220px;
-    font-size: 84px;
+.form {
+    text-align: center;
 }
 
 .difficultyLevelTitle {

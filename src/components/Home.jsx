@@ -16,11 +16,13 @@ function Home() {
   }
 
   return (
-    <div className={styles.page}>
+    <>
       <h1 className={styles.title}>Trivia Quiz</h1>
-      <h2 className={styles.difficultyLevelTitle}>Difficulty Level</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <legend className={styles.difficultyLevelTitle}>
+          Difficulty Level
+        </legend>
         <div className={styles.levelOptions}>
           <div className={styles.radioLabel}>
             <input
@@ -69,7 +71,7 @@ function Home() {
           <BiPlayCircle />
         </button>
       </form>
-    </div>
+    </>
   );
 }
 
